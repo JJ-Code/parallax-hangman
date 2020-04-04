@@ -1,38 +1,118 @@
-.App {
-  text-align: center;
+nav ul a,
+nav .brand-logo {
+  color: #444;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+p {
+  line-height: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.sidenav-trigger {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255, 255, 255, .9);
+}
+
+.parallax-container .section {
+  width: 100%;
+}
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+
+  #index-banner .section {
+    top: 10%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
 }
 
-.App-link {
-  color: #61dafb;
+.icon-block {
+  padding: 0 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+
+
+
+/* Hangman CSS */
+
+#abc-tiles {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.tiles {
+  margin-top: 30px;
+  margin-left: 15px;
+  margin-right: 15px;
+
+}
+
+
+.gameState {
+  font-size: 20px;
+  color: floralwhite;
+}
+
+.Hangman-word {
+  margin-left: 10px;
+  font-size: 2.5em;
+  color: floralwhite;
+  text-shadow: 1px 1px black;
+}
+
+.letter {
+  height: 4.5em;
+  width: 3.5em;
+}
+
+#blank-space {
+  width: 10px !important;
+  height: 0px !important;
+  margin: 5px !important;
+}
+
+
+
+
+.lives-score,
+.win-score,
+.loss-score,
+.timer {
+  margin-left: 10px;
+  font-size: 1.2em;
+  color: salmon;
+  text-shadow: 1px 1px black;
+}
+
+#dom-update {
+  padding-top: 30px;
+  font-size: 2em;
+  color: salmon;
+  text-shadow: 3px 3px black;
+}
+
+img[disabled] {
+  opacity: 0.60;
 }
