@@ -5,6 +5,8 @@ import GameTileBoard from "./components/middle/GameTileBoard";
 import BottomParallax from "./components/bottom/BottomParallax";
 import MessageModal from "./components/layouts/MessageModal";
 import ClueModal from "./components/layouts/ClueModal";
+import ResetModal from "./components/layouts/ResetModal";
+
 import Footer from "./components/layouts/Footer";
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
@@ -31,6 +33,7 @@ const App = (getNewWord) => {
         <HeaderParallax />
         <MessageModal />
         <ClueModal />
+        <ResetModal />
         <GameTileBoard />
         <BottomParallax />
         <Footer />

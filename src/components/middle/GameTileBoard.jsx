@@ -2,9 +2,9 @@ import React from 'react'
 import LetterTile from '../layouts/LetterTile'
 import Button from "../layouts/Button";
 import { connect } from 'react-redux';
-import { updateGamePlay, checkEndGame, getClue } from "../../actions/gamePlayAction";
+import { updateGamePlay, checkEndGame, getClue, resetGame, getNewWord } from "../../actions/gamePlayAction";
 
-const GameTileBoard = ({ state: { gameWordLength, guessLetters, gameWordLetters, gameWord, wins, losses, guessRemaining, endGame }, updateGamePlay, checkEndGame, getClue }) => {
+const GameTileBoard = ({ state: { gameWordLength, guessLetters, gameWordLetters, gameWord, wins, losses, guessRemaining, endGame }, resetGame, getNewWord, updateGamePlay, checkEndGame, getClue }) => {
 
   //shuffling to make ABC tiles random 
   const randomGen = "abcdefghijklmnopqrstuvwxyz".split("").map((a) =>
@@ -19,17 +19,19 @@ const GameTileBoard = ({ state: { gameWordLength, guessLetters, gameWordLetters,
     //check to see if updateGamePlay yield the end of game or not
     checkEndGame();
   }
+
   const onClickClue = ()=>{
     getClue(gameWord);
   }
+
 
 
   return (
     <div className="container">
       <div className="section">
         <div className="row center">
-          <Button onClickClue={onClickClue} linkto={'#clue-message-modal'} classAdded={"modal-trigger"} idName={"get-clue-btn"} name={"Get Clue"} />
-          <Button linkto={'#game-status-message-modal'} idName={"reset-btn"} classAdded={"modal-trigger"} name={"Restart Game"} />
+          <Button onClick={onClickClue} linkto={'#clue-message-modal'} classAdded={"modal-trigger"} idName={"get-clue-btn"} name={"Get Clue"} />
+          <Button linkto={'#reset-modal'} idName={"reset-btn"} classAdded={"modal-trigger"} name={"Restart Game"} />
         </div>
 
         <div className="row">
@@ -58,4 +60,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, { updateGamePlay, checkEndGame, getClue})(GameTileBoard);
+export default connect(mapStateToProps, { updateGamePlay, checkEndGame, getClue, resetGame, getNewWord})(GameTileBoard);

@@ -35,15 +35,18 @@ export const getClue = (word) => async dispatch => {
   console.log("Get New Clue");
   try {
     const res = await fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=84b98cb2-2053-4c97-9062-34a7f5632399`);
-    const dataJ = await res.json();
+    const data = await res.json();
+    console.log(data)
+    console.log(data[0].fl)
 
+    const clueObj = {
+      def: data[0].shortdef[0],
+      phrase: data[0].fl
+    }
 
-    console.log(res.data[0].shortdef[0]);
-    const dataReturn = res.data[0].shortdef[0]
-    
     dispatch({
       type: GET_CLUE,
-      payload: res.data[0].shortdef[0]
+      payload: clueObj
     });
   }
 

@@ -5,16 +5,15 @@ import { getNewWord, resetGame } from "../../actions/gamePlayAction";
 const GameStats = ({ icon, title, gameStats, resetGame, getNewWord }) => {
   //previous prop reference   
   const prevGameStatsRef = useRef();
-  useEffect(() => {
-    prevGameStatsRef.current = gameStats;
-  });
+
 
   const prevGameStats = prevGameStatsRef.current;
   ;
 
   useEffect(() => {
-    gameEnded();
+    prevGameStatsRef.current = gameStats;
 
+    gameEnded();
     //eslint-disable-next-line
   }, [gameStats])
 

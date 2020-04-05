@@ -25,7 +25,7 @@ const MessageModal = ({ updateGamePlay }) => {
       </a> */}
 
 
-      <div id='game-status-message-modal' className='modal' style={modalStyle}>
+      <div id='game-status-message-modal' className='modal display-block' style={modalStyle}>
         <div className='modal-content'>
           <h4>The Game Has Ended</h4>
           <br /> <br />
