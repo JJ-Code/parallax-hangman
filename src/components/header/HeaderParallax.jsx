@@ -2,9 +2,7 @@ import React, { useEffect } from 'react'
 import hollywood from "./hollywood.jpg"
 import GameStats from "./GameStats";
 import Preloader from "../layouts/Preloader";
-import Button from "../layouts/Button";
 import LetterTile from "../layouts/LetterTile";
-import MessageModal from "../layouts/MessageModal";
 import { connect } from 'react-redux';
 import { getNewWord } from "../../actions/gamePlayAction";
 import { v4 as uuid } from 'uuid';
@@ -13,16 +11,9 @@ import { v4 as uuid } from 'uuid';
 
 const HeaderParallax = ({ state: { gameWordLength, guessLetters, currentGuess, gameWordLetters, gameWord, wins, losses, guessRemaining }, getNewWord }) => {
 
-
+  //calling for inital word
   useEffect(() => {
     getNewWord();
-    
-    // ...
-    // const word = getNewWord();
-    // return () => {
-    //   splitWordToLetters(word);
-    // };
-
     //eslint-disable-next-line
   }, [])
 
@@ -30,7 +21,11 @@ const HeaderParallax = ({ state: { gameWordLength, guessLetters, currentGuess, g
   console.log(currentGuess);
 
   console.log(gameWord)
-  console.log(gameWordLength) 
+  console.log(gameWordLength)
+
+  console.log(`gameWordLetters == ${gameWordLetters}`);
+
+
   return (
 
     <div id="index-banner" className="parallax-container">
@@ -47,13 +42,12 @@ const HeaderParallax = ({ state: { gameWordLength, guessLetters, currentGuess, g
           </div>
 
           <div className="row">
-{console.log(wins)}
+            {console.log(wins)}
 
             <GameStats icon={"people"} title={"Lives Remaining"} gameStats={guessRemaining} />
             <GameStats icon={"mood"} title={"Wins"} gameStats={wins} />
             <GameStats icon={"mood_bad"} title={"Losses"} gameStats={losses} />
-            <Button linkto={'#game-status-message-modal'} classAdded={"modal-trigger"} name={"Restart Game"}/>
-            
+
           </div>
           <div className="row center" id="word-to-guess">
 
@@ -67,13 +61,15 @@ const HeaderParallax = ({ state: { gameWordLength, guessLetters, currentGuess, g
                   (<LetterTile letter={"blank"} key={uuid()} />))
               )}
 
+
+
           </div>
 
           <br /><br /><br /><br /><br />
 
-          <a href='#add-game-status-message-modal' className='btn-floating red modal-trigger'>
+          {/* <a href='#add-game-status-message-modal' className='btn-floating red modal-trigger'>
             <i className="material-icons">person_at</i>
-          </a>
+          </a> */}
 
         </div>
       </div>

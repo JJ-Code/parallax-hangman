@@ -1,4 +1,4 @@
-import { GET_NEW_WORD, SET_GUESS_AND_LIVES, SET_END_GAME,  SET_RESET, LOGS_ERROR, SET_LOADING } from "../actions/types";
+import { GET_NEW_WORD, GET_CLUE, SET_GUESS_AND_LIVES, SET_END_GAME, SET_RESET, LOGS_ERROR, SET_LOADING } from "../actions/types";
 
 
 const initialState = {
@@ -10,6 +10,7 @@ const initialState = {
   clue: null,
   wins: 0,
   losses: 0,
+  msg: null,
   endGame: false,
   error: null,
   loading: false
@@ -29,24 +30,32 @@ export default (state = initialState, action) => {
 
       };
 
+    case GET_CLUE:
+      //console.log(state);
+      return {
+        ...state,
+        clue: action.payload
+      };
+
+
     case SET_GUESS_AND_LIVES:
+      const count = state.gameWordLetters.filter(letter => letter === action.payload).length;
+     
       return {
         ...state,
         guessLetters: state.guessLetters.add(action.payload),
         guessRemaining: state.guessRemaining - (state.gameWord.includes(action.payload) ? 0 : 1),
-        gameWordLength: state.gameWordLength - (state.gameWord.includes(action.payload) ? 1 : 0),
-
+        gameWordLength: state.gameWordLength - (state.gameWord.includes(action.payload) ? (1 * count) : 0),
       };
       
 
     case SET_END_GAME:
       return {
         ...state,
-        endGame: ((state.guessRemaining <= 0) || (state.gameWordLength === 1)) ? true : false, 
+        endGame: ((state.guessRemaining <= 0) || (state.gameWordLength === 0)) ? true : false, 
         wins: (state.gameWordLength === 0) ? (state.wins + 1 ): state.wins,
         losses: (state.guessRemaining === 0) ? (state.losses + 1) : state.losses
       };
-
 
       
     case SET_RESET:
@@ -59,6 +68,7 @@ export default (state = initialState, action) => {
         guessRemaining: 10,
         clue: null,
         endGame: false,
+        msg: null,
         error: null,
         loading: false
       };

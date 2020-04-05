@@ -8,7 +8,7 @@ export const SET_LIVES = "SET_LIVES";
 export const SET_END_GAME = "SET_END_GAME";
 export const LOGS_ERROR = "LOGS_ERROR";
 export const SET_RESET = "SET_RESET";
-
+export const GET_CLUE = "GET_CLUE";
 
 
 

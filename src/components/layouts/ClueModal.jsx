@@ -6,7 +6,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 
 
 
-const MessageModal = ({ updateGamePlay }) => {
+const ClueModal = ({ updateGamePlay }) => {
 
   const onClose = () => {
     M.toast({ html: `New game has started` });
@@ -25,11 +25,11 @@ const MessageModal = ({ updateGamePlay }) => {
       </a> */}
 
 
-      <div id='game-status-message-modal' className='modal' style={modalStyle}>
+      <div id='clue-message-modal' className='modal' style={modalStyle}>
         <div className='modal-content'>
-          <h4>The Game Has Ended</h4>
+          <h4>This is a clue</h4>
           <br /> <br />
-          <h5>Goodbye Modal</h5>
+          <h5>HELLO Modal</h5>
           <br /><br />
         </div>
 
@@ -37,7 +37,7 @@ const MessageModal = ({ updateGamePlay }) => {
           <a href='#!'
             onClick={onClose}
             className='center modal-close waves-effect blue waves-light btn'>
-            Play Again!
+          Contiue!
         </a>
         </div>
       </div>
@@ -59,4 +59,4 @@ const modalStyle = {
   height: '45%'
 };
 
-export default connect(mapStateToProps, { updateGamePlay })(MessageModal);
+export default connect(mapStateToProps, { updateGamePlay })(ClueModal);
